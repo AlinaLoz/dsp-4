@@ -1,11 +1,27 @@
 {
-  "name": "dsp4",
+  "name": "2",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "dependencies": {
+    "image-webpack-loader": "^6.0.0",
+    "path": "^0.12.7",
+    "url-loader": "^3.0.0",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.10",
+    "webpack-entry-plus": "^1.0.18"
+  },
+  "devDependencies": {
+    "file-loader": "^5.0.2",
+    "ts-loader": "^6.2.1",
+    "typescript": "^3.7.2"
+  },
   "scripts": {
+    "build": "webpack --progress",
+    "start": "webpack --watch --progress",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "AlinaLoz",
-  "license": "MIT"
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Лозюк. Фильтр Гаусса.</title>
+</head>
+<body>
+    <div>
+        <canvas width="200" height="266" id="src-img" ></canvas>
+        <canvas width="200" height="266" id="transform-img" ></canvas>
+    </div>
+    <p>
+        <label for="sigma-input">sigma:<span id="sigma-value"></span></label>
+
+        <input type="range" id="sigma-input" min="0" max="256" value="1" step="0.1" class="slider">
+    </p>
+    <script src="./dist/bundle.js"></script>
+</body>
+</html>
