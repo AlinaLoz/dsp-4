@@ -6,7 +6,7 @@ export class GaussFilter {
     private readonly N: number;
 
     constructor(sigma: number) {
-        this.sigma2 = sigma ** 2;
+        this.sigma2 = 2 * sigma * sigma;
         this.sigma = sigma;
         this.N = Math.floor(3 * sigma);
     }
@@ -15,7 +15,7 @@ export class GaussFilter {
         const windowFilter = new Array<number>(2 * this.N + 1);
         windowFilter[0] = 1;
         for (let i = 1; i < this.N; i++) {
-            windowFilter[i]  = i**2/this.sigma2;
+            windowFilter[i] = Math.pow(Math.E,  -1 *i * i / this.sigma2);
             windowFilter[-i] = windowFilter[i];
         }
         return windowFilter;
@@ -42,10 +42,10 @@ export class GaussFilter {
                 tmp.push(pxl.r/sum, pxl.g/sum, pxl.b/sum, pxl.a/sum);
             }
             for (let i = 0; i < srcImage.width; i++) {
-                srcImage.data[j * (srcImage.width * 4) + i * 4] = Math.floor(tmp[i * 4]);
+                srcImage.data[j * (srcImage.width * 4) + i * 4] = Math.floor(tmp[i * 4]) ;
                 srcImage.data[j * (srcImage.width * 4) + i * 4 + 1] = Math.floor(tmp[i * 4 + 1]);
-                srcImage.data[j * (srcImage.width * 4) + i * 4 + 2] = Math.floor(tmp[i * 4 + 2]);
-                srcImage.data[j * (srcImage.width * 4) + i * 4 + 3] = Math.floor(tmp[i * 4 + 3]);
+                srcImage.data[j * (srcImage.width * 4) + i * 4 + 2] = Math.floor(tmp[i * 4 + 2]) ;
+                srcImage.data[j * (srcImage.width * 4) + i * 4 + 3] = Math.floor(tmp[i * 4 + 3]) ;
             }
         }
 
@@ -68,10 +68,10 @@ export class GaussFilter {
                 tmp.push(pxl.r/sum, pxl.g/sum, pxl.b/sum, pxl.a/sum);
             }
             for (let j = 0; j < srcImage.height; j++) {
-                srcImage.data[j * (srcImage.width * 4) + i * 4] = Math.floor(tmp[j * 4]);
-                srcImage.data[j * (srcImage.width * 4) + i * 4 + 1] = Math.floor(tmp[j * 4 + 1]);
+                srcImage.data[j * (srcImage.width * 4) + i * 4] = Math.floor(tmp[j * 4]) ;
+                srcImage.data[j * (srcImage.width * 4) + i * 4 + 1] = Math.floor(tmp[j * 4 + 1]) ;
                 srcImage.data[j * (srcImage.width * 4) + i * 4 + 2] = Math.floor(tmp[j * 4 + 2]);
-                srcImage.data[j * (srcImage.width * 4) + i * 4 + 3] = Math.floor(tmp[j * 4 + 3]);
+                srcImage.data[j * (srcImage.width * 4) + i * 4 + 3] = Math.floor(tmp[j * 4 + 3]) ;
             }
         }
         return srcImage;
